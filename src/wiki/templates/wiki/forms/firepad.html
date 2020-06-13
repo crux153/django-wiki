@@ -1,0 +1,12 @@
+<div>
+  <div name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+  </div>
+</div>
+
+<script language="javascript">
+  var firebaseConfig = {
+    apiKey: "{{ firebase.apiKey }}",
+    authDomain: "{{ firebase.authDomain }}",
+    databaseURL: "{{ firebase.databaseURL }}",
+  };
+</script>

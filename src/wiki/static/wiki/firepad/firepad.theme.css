@@ -1,0 +1,12 @@
+#firepad {
+  height: 500px;
+}
+
+#firepad pre {
+  padding: 0 4px;
+  background: transparent;
+}
+
+#firepad .powered-by-firepad {
+  display: none;
+}
