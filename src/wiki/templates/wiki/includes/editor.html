@@ -4,6 +4,11 @@
 {% wiki_form form %}
 {% addtoblock "js" %}
 <script language="javascript">
+  var editorMetadata = {
+    slug: "{{ urlpath.slug }}",
+    user: {% if user.is_authenticated %}"{{ user }}"{% else %}null{% endif %}
+  };
+
   $(document).ready(function() {
     $("#id_revision").val('{{ article.current_revision.id }}');
   });

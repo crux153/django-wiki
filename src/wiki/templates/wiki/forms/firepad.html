@@ -1,6 +1,6 @@
-<div>
-  <div name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
-  </div>
+<div class="firepad-wrapper">
+  <div id="userlist"></div>
+  <div name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}></div>
 </div>
 
 <script language="javascript">
@@ -9,4 +9,5 @@
     authDomain: "{{ firebase.authDomain }}",
     databaseURL: "{{ firebase.databaseURL }}",
   };
+  var firepadContent = "{{ widget.value | escapejs }}";
 </script>

@@ -55,5 +55,6 @@ class Firepad(BaseEditor):
             "wiki/firepad/codemirror.js",
             "wiki/firepad/codemirror-markdown.js",
             "wiki/firepad/firepad.min.js",
+            "wiki/firepad/firepad-userlist.js",
             "wiki/firepad/firepad.init.js",
         )

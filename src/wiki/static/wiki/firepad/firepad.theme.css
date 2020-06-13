@@ -1,3 +1,7 @@
+.firepad-wrapper {
+  position: relative;
+}
+
 #firepad {
   height: 500px;
 }
@@ -9,4 +13,49 @@
 
 #firepad .powered-by-firepad {
   display: none;
+}
+
+#firepad .CodeMirror {
+  height: 100%;
+}
+
+.firepad-userlist {
+  position: absolute;
+  top: 24px;
+  left: -128px;
+  text-align: left;
+  line-height: normal;
+}
+
+.firepad-userlist-heading {
+  margin: 20px 0 0;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom: 2px solid #c9c9c9;
+}
+
+.firepad-userlist-user {
+  position: relative;
+  margin: 3px 0;
+  height: 32px;
+  border-bottom: 1px solid #c9c9c9;
+  padding-bottom: 5px;
+}
+
+.firepad-userlist-color-indicator {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.firepad-userlist-name {
+  position: absolute;
+  top: 2px;
+  left: 38px;
+  width: 95px;
+  font-size: 13px;
 }
