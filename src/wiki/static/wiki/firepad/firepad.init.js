@@ -9,7 +9,7 @@ $(document).ready(function () {
     var firepadRef = firebase.database().ref().child(editorMetadata.slug);
 
     // Create CodeMirror (with lineWrapping on).
-    var codeMirror = CodeMirror(document.getElementById("firepad"), {
+    var codeMirror = CodeMirror.fromTextArea(document.getElementById("firepad"), {
       mode: "markdown",
       lineWrapping: true,
       lineNumbers: true,
