@@ -15,9 +15,11 @@ $(document).ready(function () {
       lineNumbers: true,
     });
 
-    var userId = editorMetadata.user !== null ?
-      editorMetadata.user :
-      "Guest " + Math.floor(Math.random() * 1000);
+    if (editorMetadata.user === null) {
+      editorMetadata.user = "Guest " + Math.floor(Math.random() * 1000);
+    } 
+
+    var userId = editorMetadata.user;
 
     // Create Firepad (with rich text toolbar and shortcuts enabled).
     var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {

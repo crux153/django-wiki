@@ -1,0 +1,67 @@
+{% load i18n sekizai_tags static %}
+
+{% addtoblock "js" %}
+<script type="text/javascript" src="{% static "wiki/firechat/firechat.min.js" %}"></script>
+{% endaddtoblock %}
+
+{% addtoblock "css" %}
+  <link rel="stylesheet" href="{% static "wiki/firechat/firechat.min.css" %}" />
+  <style>
+    #firechat-header, #firechat-tab-list, #firechat-tab-content .tab-pane-menu {
+      display: none;
+    }
+    #firechat .chat {
+      height: 370px;
+      border-top: 1px solid #ccc;
+    }
+    #firechat .user-chat,
+    #firechat .user-mute {
+      display: none;
+    }
+  </style>
+{% endaddtoblock %}
+
+<div id="firechat-wrapper">
+
+</div>
+
+{% addtoblock "js" %}
+<script type="text/javascript">
+  $(document).ready(function () {
+    try {
+      var chatRef = firebase.database().ref().child(editorMetadata.slug).child("chat");
+      var userId = editorMetadata.user;
+      var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"))._chat;
+
+      chat._userId = userId;
+      chat._userName = userId;
+      chat._userRef = chat._firechatRef.child("users").child(chat._userId);
+      chat._sessionRef = chat._userRef.child("sessions").push();
+      chat._sessionId = chat._sessionRef.key;
+
+      chat._loadUserMetadata(function() {
+        setTimeout(function() {
+          chat._setupDataEvents();
+          chat.getRoomList(function(rooms) {
+            var room;
+            for (var key in rooms) {
+              if (rooms[key].name === "default") {
+                room = rooms[key];
+              }
+            }
+            if (room) {
+              chat.enterRoom(room.id);
+            } else {
+              chat.createRoom("default", "private", function(roomId) {
+                chat.enterRoom(roomId);
+              });
+            }
+          });
+        }, 0);
+      });
+    } catch (error) {
+      console.log(error);
+    }  
+  });
+</script>
+{% endaddtoblock %}
