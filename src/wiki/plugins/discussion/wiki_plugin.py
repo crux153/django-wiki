@@ -15,13 +15,6 @@ class DiscussionPlugin(BasePlugin):
         "get_form_kwargs": (lambda a: {}),
     }
 
-    class RenderMedia:
-        js = [
-            "wiki/firechat/firechat.min.js",
-        ]
-
-        css = {"screen": "wiki/firechat/firechat.min.css"}
-
     markdown_extensions = []
 
 
