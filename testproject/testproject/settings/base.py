@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "sorl.thumbnail",
     "django_nyt.apps.DjangoNytConfig",
     "wiki.apps.WikiConfig",
+    "wiki.plugins.discussion.apps.DiscussionConfig",
     "wiki.plugins.macros.apps.MacrosConfig",
     "wiki.plugins.help.apps.HelpConfig",
     "wiki.plugins.links.apps.LinksConfig",
@@ -48,7 +49,6 @@ INSTALLED_APPS = [
     "wiki.plugins.notifications.apps.NotificationsConfig",
     "wiki.plugins.editsection.apps.EditSectionConfig",
     "wiki.plugins.globalhistory.apps.GlobalHistoryConfig",
-    "wiki.plugins.discussion.apps.DiscussionConfig",
     "mptt",
 ]
 
