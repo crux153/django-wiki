@@ -305,18 +305,20 @@ class EditForm(forms.Form, SpamProtectionMixin):
         """
         if self.no_clean or self.preview:
             return self.cleaned_data
-        if not str(self.initial_revision.id) == str(self.presumed_revision):
-            raise forms.ValidationError(
-                gettext(
-                    "While you were editing, someone else changed the revision. Your contents have been automatically merged with the new contents. Please review the text below."
+        # Skip revision check for Firepad
+        if getEditor().editor_id != "firepad":
+            if not str(self.initial_revision.id) == str(self.presumed_revision):
+                raise forms.ValidationError(
+                    gettext(
+                        "While you were editing, someone else changed the revision. Your contents have been automatically merged with the new contents. Please review the text below."
+                    )
                 )
-            )
-        if (
-            "title" in self.cleaned_data
-            and self.cleaned_data["title"] == self.initial_revision.title
-            and self.cleaned_data["content"] == self.initial_revision.content
-        ):
-            raise forms.ValidationError(gettext("No changes made. Nothing to save."))
+            if (
+                "title" in self.cleaned_data
+                and self.cleaned_data["title"] == self.initial_revision.title
+                and self.cleaned_data["content"] == self.initial_revision.content
+            ):
+                raise forms.ValidationError(gettext("No changes made. Nothing to save."))
         self.check_spam()
         return self.cleaned_data
 
