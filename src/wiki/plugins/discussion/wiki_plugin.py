@@ -6,6 +6,7 @@ from wiki.core.plugins.base import BasePlugin
 class DiscussionPlugin(BasePlugin):
 
     slug = "discussion"
+    expand_by_default = True
 
     sidebar = {
         "headline": _("Discussion"),
